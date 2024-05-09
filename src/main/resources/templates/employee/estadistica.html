@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <title>Estadísticas Empleados</title>
+    </head>
+    <body>
+        <main>
+            <div class="container px-4 py-5">
+                <h1 class="pb-2 border-bottom">Estadisticas empleados</h1>
+                <h4>Cantidad de empleados por región</h4>
+                <form method="post" th:action="@{/employee/searchEmpMin}">
+
+                    <div class="input-group mb-3">
+                        <input name="searchField" class="form-control mb-3" type="text"
+                               placeholder="Ingrese cantidad minima"/>
+                        <button class="btn btn-outline-primary" type="button">Buscar</button>
+                        <a class="btn-outline-secondary" th:href="@{/employee/estadistica}"> Limpiar</a>
+                    </div>
+                </form>
+                <table class="table table-sm">
+                    <tr>
+                        <th>Región</th>
+                        <th>Cantidad de empleados</th>
+                    </tr>
+                    <tr th:each="empXreg : ${list} ">
+                        <td th:text="${empXreg.regiondescription}"></td>
+                        <td th:text="${empXreg.cantidadempleados}"></td>
+                    </tr>
+                </table>
+                <h4 class="mt-4">Cantidad de empleados por pais</h4>
+                <form class="row" method="post" th:action="@{/employee/filtroPais}">
+                <label class="col-form-label col-sm-2 col-md-1" for="filtrar">Filtrar</label>
+                <div class="col-sm-3 col-md-2">
+                    <select class="form-select" id="filtrar" name="filtro" onchange="this.form.submit()">
+                        <option value="-1">Todos</option>
+                        <option th:each="pais : ${listaCompleta}" th:value="${pais.pais}" th:text="${pais.pais}">País 1</option>
+                    </select>
+                </div>
+            </form>
+
+                <table class="table table-sm">
+                    <tr>
+                        <th>País</th>
+                        <th>Cantidad de empleados</th>
+                    </tr>
+                    <tr th:each="pais : ${lista1}">
+                        <td th:text="${pais.pais}"></td>
+                        <td th:text="${pais.cantidad}"></td>
+                    </tr>
+                </table>
+
+            </div>
+        </main>
+
+        <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    </body>
+</html>
+
