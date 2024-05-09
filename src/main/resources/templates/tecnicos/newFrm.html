@@ -15,13 +15,9 @@
           <input type="text" class="form-control" th:field="*{firstName}" >
         </div>
 
-
         <div class="mb-3">
-          <label for="lasttName" class="form-label">Nombre del Tecnico</label>
-          <input type="text" class="form-control" id="lasttName" th:field="*{lasttName}"
-                 th:classappend="${#fields.hasErrors('lasttname')?'is-invalid':''}">
-          <div class="invalid-feedback" th:if="${#fields.hasErrors('lastname')}"
-               th:errors="*{lasttName}" ></div>
+          <label for="lastName" class="form-label">Nombre del Tecnico</label>
+          <input type="text" class="form-control" id="lastName" th:field="*{getLasttName()}">
         </div>
 
         <div class="mb-3">
@@ -32,11 +28,6 @@
         <div class="mb-3">
           <label class="form-label">Phone</label>
           <input type="text" class="form-control" th:field="*{phone}" >
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Dni</label>
-          <input type="text" class="form-control" th:field="*{dni}" >
         </div>
 
         <div class="mb-3">

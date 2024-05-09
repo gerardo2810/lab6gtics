@@ -44,7 +44,7 @@ public class TecnicosController {
 
         if(bindingResult.hasErrors()){
             model.addAttribute("list", tecnicosRepository.findAll());
-            return "product/newFrm";
+            return "tecnicos/newFrm";
         }else{
             if (tecnicos.getTechnicianId() == 0) {
                 List<Tecnicos> productList = tecnicosRepository.findByFirstName(tecnicos.getFirstName());
@@ -58,7 +58,7 @@ public class TecnicosController {
                 if (existe) {
                     System.out.println("El tecnico existe");
                     model.addAttribute("listaCategorias", tecnicosRepository.findAll());
-                    return "product/newFrm";
+                    return "tecnicos/newFrm";
                 } else {
                     attr.addFlashAttribute("msg", "Tecnico creado exitosamente");
                     tecnicosRepository.save(tecnicos);
@@ -83,7 +83,7 @@ public class TecnicosController {
 
             return "tecnicos/newFrm";
         } else {
-            return "redirect:/tecnicos";
+            return "redirect:/tecnicos/listTec";
         }
     }
 
