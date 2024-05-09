@@ -83,7 +83,7 @@ public class TecnicosController {
 
             return "tecnicos/newFrm";
         } else {
-            return "redirect:/tecnicos/listTec";
+            return "redirect:/tecnicos/listaTec";
         }
     }
 
@@ -98,7 +98,7 @@ public class TecnicosController {
             tecnicosRepository.deleteById(id);
             attr.addFlashAttribute("msg", "Tecnico borrado exitosamente");
         }
-        return "redirect:/tecnico";
+        return "redirect:/tecnico/listaTec";
 
     }
 
