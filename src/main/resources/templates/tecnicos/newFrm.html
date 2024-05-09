@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div class="container">
+
+  <div class="row mb-4">
+    <div class="col-md-6 offset-md-3">
+      <h2>Nuevo Producto</h2>
+      <hr/>
+      <form method="post" th:action="@{/tecnicos/save}" th:object="${tecnicos}">
+
+        <div class="mb-3">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-control" th:field="*{firstName}" >
+        </div>
+
+
+        <div class="mb-3">
+          <label for="lasttName" class="form-label">Nombre del Tecnico</label>
+          <input type="text" class="form-control" id="lasttName" th:field="*{lasttName}"
+                 th:classappend="${#fields.hasErrors('lasttname')?'is-invalid':''}">
+          <div class="invalid-feedback" th:if="${#fields.hasErrors('lastname')}"
+               th:errors="*{lasttName}" ></div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">DNI</label>
+          <input type="text" class="form-control" th:field="*{dni}" >
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Phone</label>
+          <input type="text" class="form-control" th:field="*{phone}" >
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Dni</label>
+          <input type="text" class="form-control" th:field="*{dni}" >
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Age</label>
+          <input type="text" class="form-control" th:field="*{age}" >
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<script th:replace="~{fragments/navbar.html :: footer-bootstrap}"></script>
+</body>
+</html>
